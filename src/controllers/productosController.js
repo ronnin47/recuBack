@@ -40,9 +40,11 @@ const updateProducto = async (req, res) => {
 }
 
 const deleteProducto = async (req, res) => {
+
+  console.log("Entro al delete")
   try {
     const { id } = req.params
-    const { error } = supabase.from('productos').delete().eq('id', id)
+    const { error } = await supabase.from('productos').delete().eq('id', id)
     if (error) return res.status(500).json({ error: error.message })
     console.log('Producto eliminado, id:', id)
     res.json({ mensaje: 'Producto eliminado' })
@@ -51,5 +53,7 @@ const deleteProducto = async (req, res) => {
     res.status(500).json({ error: 'Error del servidor' })
   }
 }
+
+
 
 module.exports = { getProductos, createProducto, updateProducto, deleteProducto }
