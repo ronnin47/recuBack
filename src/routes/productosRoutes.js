@@ -5,6 +5,6 @@ const { getProductos, createProducto, updateProducto, deleteProducto } = require
 router.get('/productos', getProductos)
 router.post('/productos', createProducto)
 router.put('/productos/:id', updateProducto)
-router.delete('/productos', deleteProducto)
+router.delete('/productos/:id', deleteProducto)
 
 module.exports = router
